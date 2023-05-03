@@ -73,6 +73,13 @@
 
         document.getElementById("bt").addEventListener("click", function () {
 
+              function removeElement() {
+          var elements = document.getElementsByTagName("p");
+          while (elements[0]) {
+            elements[0].parentNode.removeChild(elements[0]);
+          }
+        }
+        removeElement();
             let num = parseInt(prompt("Enter a number between 1 and 100:"));
             if (num >= min && num <= max) {
                 while (count < 5) {
