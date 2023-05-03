@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&display=swap" rel="stylesheet">
+
+
+    <style>
+        h1 {
+            font-size: 3vw;
+            font-weight: bold;
+            text-decoration: underline;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        div {
+            text-align: center;
+        }
+
+        p {
+            font-size: large;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: bold;
+        }
+
+        button {
+            /* padding: 1vw 3vw;
+            margin: 5px; */
+            height: 5vh;
+            width: 10vw;
+            font-size: 1.3vw;
+            font-family: 'Space Grotesk', sans-serif;
+            border: 1px solid rgb(100, 100, 100);
+            color: rgb(67, 66, 66);
+            border-radius: 0.5em;
+            background-color: white;
+            font-weight: bold;
+            cursor: pointer;
+
+        }
+
+        button:hover {
+            background-color: rgb(175, 173, 173);
+            color: black;
+        }
+
+        button:active {
+            background-color: rgb(207, 206, 206);
+            color: rgb(67, 66, 66);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>
+        <center>Guess the Number Game</center>
+    </h1>
+    <div>
+        <button id="bt">Start game</button>
+        <p></p>
+    </div>
+    <script>
+        let min = 1;
+        let max = 100;
+        let guess;
+        let count = 0;
+
+        document.getElementById("bt").addEventListener("click", function () {
+
+            let num = parseInt(prompt("Enter a number between 1 and 100:"));
+            if (num >= min && num <= max) {
+                while (count < 5) {
+                    guess = Math.floor((Math.random() * max) + min);
+                    count++;
+
+                    tn = document.getElementsByTagName('div');
+                    tag = document.createElement("p");
+
+                    tag.innerText = "Computer guessed " + guess;
+                    tn[0].appendChild(tag);
+                    if (guess === num) {
+                        tn = document.getElementsByTagName('div');
+                        tag = document.createElement("p");
+                        tag.innerText = "Computer wins";
+                        tn[0].appendChild(tag);
+                        break;
+                    }
+                }
+
+                if (count === 5) {
+                    tn = document.getElementsByTagName('div');
+                    tag = document.createElement("p");
+                    tag.innerText = "You win";
+                    tn[0].appendChild(tag);
+                }
+
+            } else {
+                alert('Invalid input. Enter a number between 1 and 100');
+            }
+
+        }
+        );
+    </script>
+</body>
+
+</html>
